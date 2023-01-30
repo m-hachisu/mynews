@@ -1,4 +1,4 @@
-@extends('layouts.edit')
+@extends('layouts.admin')
 
 @section('title', 'プロフィールの編集')
 
