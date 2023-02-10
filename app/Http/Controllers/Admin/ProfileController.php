@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 //Profile Modelを扱う一文追記
 use App\Models\Profiles;
+//ProfileHistory Modelの使用を宣言する為追記
+use App\Models\ProfileHistory;
+//Carbonの使用を追記
+use Carbon\Carbon;
 
 class ProfileController extends Controller
 {
@@ -48,6 +52,11 @@ class ProfileController extends Controller
         unset($profiles_form['_token']);
         
         $profiles->fill($profiles_form)->save();
+        
+        $profile_history = new ProfileHistory();
+        $profile_history->profiles_id = $profiles->id;
+        $profile_history->edited_at = Carbon::now();
+        $profile_history->save();
         
         return redirect('admin/profile/');
     }
