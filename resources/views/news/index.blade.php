@@ -22,6 +22,7 @@
                         <div class="col-md-6">
                             <p class="body mx-auto">{{ Str::limit($headline->body, 650) }})</p>
                         </div>
+                        <a href="{{ route('comment.show', ['id' => $headline->id]) }}">詳細</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +30,6 @@
         <hr color="#c0c0c0">
         <div class="row">
             <div class="posts col-md-8 mx-auto mt-3">
-                <p>Laravel_16_課題_追記</p>
                 @foreach($posts as $post)
                     <div class="post">
                         <div class="row">
@@ -49,6 +49,7 @@
                                     <img src="{{ secure_asset('storage/image/' . $post->image_path) }}">
                                 @endif
                             </div>
+                            <a href="{{ route('comment.show', ['id' => $post->id]) }}">詳細</a>
                         </div>
                     </div>
                     <hr color="#c0c0c0">

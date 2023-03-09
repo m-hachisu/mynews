@@ -54,3 +54,10 @@ Route::get('/', [PublicNewsController::class, 'index'])->name('news.index');
 
 use App\Http\Controllers\ProfileController as PublicProfileController;
 Route::get('/profile', [PublicProfileController::class, 'index'])->name('profile.index');
+
+use App\Http\Controllers\CommentController;
+Route::controller(CommentController::class)->group(function() {
+    Route::get('comment', 'show')->name('comment.show');
+    Route::post('comment/create', 'create')->name('comment.create');
+    Route::get('comment/delete', 'delete')->name('comment.delete')->middleware('auth');
+});
